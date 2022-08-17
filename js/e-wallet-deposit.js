@@ -6,7 +6,10 @@ document.getElementById('btn-deposit').addEventListener('click', function () {
     const previousDeposit = getElementValueById('deposit-total');
 
      if (isNaN(newdeposit)) {
-        alert('please enter a number');
+        alert('please enter a valid amount');
+        return;
+     } else if(newdeposit<=0) {
+         alert('please enter a valid amount');
         return;
     }
     

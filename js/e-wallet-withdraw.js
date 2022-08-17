@@ -4,15 +4,22 @@ document.getElementById('btn-withdraw').addEventListener('click', function () {
     const newwithdraw = getInputValueById('withdraw-field');
     const previouswithdraw = getElementValueById('withdraw-total');
      if (isNaN(newwithdraw)) {
-        alert('please enter a number');
+         alert('please enter a valid amount');
+        return;
+     } else if(newwithdraw<=0) {
+         alert('please enter a valid amount');
         return;
     }
    
     const newwithdrawTotal = newwithdraw + previouswithdraw;
-    setTextElementValueById('withdraw-total', newwithdrawTotal)
-   
-    
     const balanceTotal = getElementValueById('balance-total');
+
+
+     if(newwithdraw > balanceTotal){
+        alert('You have not enough mony!');
+        return;
+    }
+    setTextElementValueById('withdraw-total', newwithdrawTotal);
     const newBalance = balanceTotal - newwithdraw;
      
     setTextElementValueById('balance-total', newBalance);
